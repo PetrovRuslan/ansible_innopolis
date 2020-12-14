@@ -13,3 +13,19 @@
     permanent: true
     state: enabled
   notify: Restart firewalld
+
+- name: add firewalld rule
+  firewalld:
+    zone: public
+    port: 10051/tcp
+    permanent: true
+    state: enabled
+  notify: Restart firewalld
+
+- name: add firewalld rule
+  firewalld:
+    zone: public
+    port: 10050/tcp
+    permanent: true
+    state: enabled
+  notify: Restart firewalld

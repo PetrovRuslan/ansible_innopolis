@@ -1,0 +1,16 @@
+# - name: Add repository
+#   yum_repository:
+#     name: zabbix repo
+#     description: agetn yum repo
+#     baseurl: https://repo.zabbix.com/zabbix/5.0/rhel/8/x86_64/zabbix-release-5.0-1.el8.noarch.rpm
+# - name: add repository
+#   shell: "rpm -Uvh https://repo.zabbix.com/zabbix/5.0/rhel/8/x86_64/zabbix-release-5.0-1.el8.noarch.rpm"
+
+- name: install zabbix_agentd
+  yum: name=zabbix-agent state=installed 
+
+- name: Start docker.service and enabled boot start
+  service: name=zabbix-agent state=started enabled=yes
+
+- name: Generate index.html
+  template: src=zabbix_agentd.j2 dest=/etc/zabbix/zabbix_agentd.conf mode=0555
