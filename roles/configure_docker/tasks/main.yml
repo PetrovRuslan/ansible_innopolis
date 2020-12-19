@@ -2,6 +2,9 @@
 - name: configure docker & docker compose - step1
   include: update_server.yml
 
+- name: configure docker & docker compose - step5
+  include: install_python3.yml
+
 - name: configure docker & docker compose - step2
   include: install_docker.yml
 
@@ -11,8 +14,5 @@
 - name: configure docker & docker compose - step4
   include: configure_firewalld.yml
 
-- name: configure docker & docker compose - step5
-  include: install_python3.yml
-
-- name: configure docker & docker compose - step6
-  include: install_zabbix-agent.yml
+# - name: configure docker & docker compose - step6
+#   include: install_zabbix-agent.yml
